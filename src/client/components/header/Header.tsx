@@ -8,9 +8,7 @@ const linksData = [
   { name: 'about', path: '/about' },
 ];
 export const Header = () => {
-  useEffect(() => {
-    console.log('mounted header');
-  }, []);
+  useEffect(() => {}, []);
 
   const renderNavLinks = () => {
     return linksData.slice(1).map((item: any, index: number) => {

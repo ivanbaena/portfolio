@@ -1,20 +1,19 @@
 import React, { useContext } from 'react';
-import { SwiperSlide } from 'swiper/react';
-import Slider from '../components/slider/Slider';
+import { Scroll } from '../components/scroll/';
 import { Landing } from '../components/landing/';
-import { Viewbox } from '../components/viewbox/';
+import { Briefcase } from '../components/briefcase';
 
 const Div = () => (
-  <div style={{ backgroundColor: 'black', height: '100vh' }}>Slide</div>
+  <div style={{ backgroundColor: '#e1d0a5', height: '100vh' }}>Slide</div>
 );
 const HomePage = (props: any) => {
   return (
     <div>
-      <Slider>
+      <Scroll>
         <Landing />
-        <Viewbox />
+        <Briefcase />
         <Div />
-      </Slider>
+      </Scroll>
     </div>
   );
 };

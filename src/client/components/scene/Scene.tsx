@@ -4,12 +4,15 @@ export const Scene = ({
   children,
   className,
   style,
+  content,
 }: {
   children: React.ReactNode;
   className?: any;
   style?: any;
+  content?: any;
 }): JSX.Element => (
   <div id='scene' className={`${styles.scene} ${className}`} style={style}>
+    {content && content()}
     {children}
   </div>
 );

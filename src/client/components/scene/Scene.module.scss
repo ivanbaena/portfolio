@@ -1,3 +1,10 @@
 .scene {
   transition: all 0.4s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+  // & :global(.swiper-container-horizontal > .swiper-scrollbar) {
+  //   display: none;
+  // }
+  :global(.zindex) {
+    z-index: 9999;
+  }
 }
