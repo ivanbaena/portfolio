@@ -3,28 +3,11 @@ import ReactDOM from 'react-dom';
 import { renderRoutes } from 'react-router-config';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router } from 'react-router-dom';
-
 import { Routes } from './Routes';
 
 import './styles/index.css';
-// Import Swiper styles
-import 'swiper/swiper-bundle.css';
 
-import '../static/5-dots.png';
-
-const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        userPosts: {
-          merge(existing, incoming) {
-            return incoming;
-          },
-        },
-      },
-    },
-  },
-});
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   cache,

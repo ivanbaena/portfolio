@@ -1,6 +1,6 @@
-import fetch from "cross-fetch";
-import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
-import { Request } from "express";
+import fetch from 'cross-fetch';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { Request } from 'express';
 
 // Apollo Setup
 export const client = (req: Request) =>
@@ -9,11 +9,11 @@ export const client = (req: Request) =>
     // Remember that this is the interface the SSR server will use to connect to the
     // API server, so we need to ensure it isn't firewalled, etc
     link: createHttpLink({
-      uri: "http://localhost:4000/graphql",
+      uri: 'http://localhost:4000/graphql',
       fetch,
-      credentials: "include",
+      credentials: 'same-origin',
       headers: {
-        cookie: req.header("Cookie"),
+        cookie: req.header('Cookie'),
       },
     }),
     cache: new InMemoryCache(),

@@ -1,6 +1,7 @@
-import App from "./App";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+import App from './app';
+import Home from './pages/Home';
+import NotFound from './pages/NotFound';
+import Admin from './pages/admin';
 
 export const Routes = [
   {
@@ -8,7 +9,12 @@ export const Routes = [
     routes: [
       {
         ...Home,
-        path: "/",
+        path: '/',
+        exact: true,
+      },
+      {
+        ...Admin,
+        path: '/admin',
         exact: true,
       },
       {

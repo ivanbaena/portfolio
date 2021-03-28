@@ -1,26 +1,17 @@
 import React, { useContext } from 'react';
-import { Scroll } from '../components/scroll/';
-import { Landing } from '../components/landing/';
-import { Briefcase } from '../components/briefcase';
+import Users from '../users';
+import Projects from '../components/project';
 
-const Div = () => (
-  <div style={{ backgroundColor: '#e1d0a5', height: '100vh' }}>Slide</div>
-);
-const HomePage = (props: any) => {
+const HomePage: React.FC = (props: any) => {
   return (
     <div>
-      <Scroll>
-        <Landing />
-        <Briefcase />
-        <Div />
-      </Scroll>
+      <h1>Home Page</h1>
+      <Projects />
     </div>
   );
 };
 
-const loadData = () => {
-  console.log('load data');
-};
+const loadData = () => {};
 
 export default {
   component: HomePage,

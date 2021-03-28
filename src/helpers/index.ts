@@ -1,3 +1,3 @@
-export * from "./Html";
-export * from "./renderer";
-export * from "./apollo";
+export * from './html';
+export * from './renderer';
+export * from './apollo';

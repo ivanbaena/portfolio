@@ -1,17 +1,19 @@
-import React from "react";
-import { ApolloProvider } from "@apollo/client";
-import { Request, Response } from "express";
-import { renderToString, renderToStaticMarkup } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
-import { renderRoutes, matchRoutes } from "react-router-config";
-import { getDataFromTree } from "@apollo/client/react/ssr";
+import React from 'react';
+import { ApolloProvider } from '@apollo/client';
+import { Request, Response } from 'express';
+import { renderToString, renderToStaticMarkup } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
+import { renderRoutes, matchRoutes } from 'react-router-config';
+import { getDataFromTree } from '@apollo/client/react/ssr';
 
-import { Routes } from "../client/Routes";
-import { client, context } from "./apollo";
-import { Html } from "./Html";
+import { Routes } from '../client/Routes';
+import { client, context } from './apollo';
+import { Html } from './html';
 
 export const renderer = (req: Request, res: Response) => {
   const clientInstance = client(req);
+  console.log('IVAN_CLIENT,', clientInstance);
+
   const initialState = clientInstance.extract();
 
   const App = (
@@ -46,8 +48,7 @@ export const renderer = (req: Request, res: Response) => {
       const html = <Html content={content} state={initialState} />;
 
       res.status(200);
-      res.send(`<!doctype html>
-${renderToStaticMarkup(html)}`);
+      res.send(`<!doctype html>${renderToStaticMarkup(html)}`);
       res.end();
     });
   });
