@@ -15,17 +15,17 @@ export class Project extends MongoDataSource<ProjectInterface> {
     name: string,
     brief: string,
     keywords: string[],
-    img: string,
     github: string,
-    main: string
+    main: string,
+    img: string
   ) {
     return new this.model({
       name: name,
       brief: brief,
       keywords: keywords,
-      img: img,
       github: github,
       main: main,
+      img: img,
     }).save();
   }
 

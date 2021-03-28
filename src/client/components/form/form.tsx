@@ -1,38 +1,15 @@
 import React, { useRef, FormEvent } from 'react';
+import { refsObj } from './types';
+import Input from './input';
 
 interface FormProps {
   inputs: string[];
+  textAreas: string[];
   mutationCallback: any;
   data?: any;
 }
 
-type refsObj =
-  | {
-      [key: string]: React.MutableRefObject<HTMLInputElement | null>;
-    }
-  | { [key: string]: any };
-
-const renderInputs = (refs: refsObj, inputs: string[]) => {
-  const ex = useRef();
-  return inputs.map((input, i) => {
-    return (
-      <div className='field' key={i}>
-        <label className='label'>{input}</label>
-        <div className='control'>
-          <input
-            ref={refs[input]}
-            className='input'
-            type='text'
-            placeholder={`${input}-text`}
-            name={input}
-          />
-        </div>
-      </div>
-    );
-  });
-};
-
-const Form: React.FC<FormProps> = ({ inputs, mutationCallback }) => {
+const Form: React.FC<FormProps> = ({ inputs, mutationCallback, textAreas }) => {
   let refs: refsObj = {};
   for (const input of inputs) {
     refs = { ...refs, [input]: useRef<HTMLInputElement | null>() };
@@ -46,6 +23,7 @@ const Form: React.FC<FormProps> = ({ inputs, mutationCallback }) => {
         obj = { ...obj, [ref]: refs[ref].current?.value.split(',') };
       } else obj = { ...obj, [ref]: refs[ref].current?.value };
     }
+    console.log(obj);
     mutationCallback({ variables: obj });
   };
   return (
@@ -54,7 +32,7 @@ const Form: React.FC<FormProps> = ({ inputs, mutationCallback }) => {
         className='column is-half is-offset-one-quarter'
         onSubmit={handleOnSubmit}
       >
-        {renderInputs(refs, inputs)}
+        <Input refs={refs} inputs={inputs} textAreas={textAreas} />
         <button type='submit'>Submit</button>
       </form>
     </div>

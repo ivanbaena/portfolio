@@ -4,15 +4,18 @@ import Project from './project/project';
 import styles from './projects.module.css';
 import { GET_PROJECTS } from '../../queries/';
 
-const Projects = () => {
+interface ProjectProps {
+  listview: boolean;
+}
+const Projects: React.FC<ProjectProps> = ({ listview }) => {
   const { loading, error, data } = useQuery(GET_PROJECTS, { ssr: false });
-  if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (loading) return <span>Loading...</span>;
+  if (error) return <span>`Error! ${error.message}`</span>;
 
   return (
     <div className={styles.container}>
       {data.projects.map((project: any, i: number) => {
-        return <Project {...project} key={i} />;
+        return <Project {...project} key={i} listview={listview} />;
       })}
     </div>
   );

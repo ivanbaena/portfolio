@@ -13,6 +13,7 @@ const AddProject: React.FC = () => {
         inputs={['name', 'brief', 'keywords', 'github', 'main', 'img']}
         mutationCallback={addProject}
         data={data && data}
+        textAreas={['brief']}
       />
     </div>
   );
